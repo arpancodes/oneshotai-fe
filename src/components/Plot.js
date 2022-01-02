@@ -29,10 +29,7 @@ function Plot({ resource }) {
         );
         const colors = res.data.colleges.map((_) => randomRGBColor());
         data.datasets[0].backgroundColor = colors.map(
-          (color) => `rgba(${color}, 0.5)`
-        );
-        data.datasets[0].borderColor = colors.map(
-          (color) => `rgba(${color}, 1)`
+          (color) => `rgba(${color}, 0.6)`
         );
         setData(data);
         console.log(data);
@@ -43,24 +40,27 @@ function Plot({ resource }) {
   if (isLoading) return <Loading />;
 
   return (
-    <Doughnut
-      data={data}
-      options={{
-        onClick: (e, item) => {
-          console.log(data.labels[item[0].index], item[0].index);
-          navigate(`/colleges?${resource}=${data.labels[item[0].index]}`);
-        },
-        plugins: {
-          legend: {
-            display: false,
+    <div className="w-4/5 flex flex-col justify-center mx-auto items-center">
+      <Doughnut
+        data={data}
+        options={{
+          onClick: (e, item) => {
+            console.log(data.labels[item[0].index], item[0].index);
+            navigate(`/colleges?${resource}=${data.labels[item[0].index]}`);
           },
-          title: {
-            display: true,
-            text: `By ${resource}`,
+          plugins: {
+            legend: {
+              display: false,
+            },
+            title: {
+              display: false,
+              text: `By ${resource}`,
+            },
           },
-        },
-      }}
-    />
+        }}
+      />
+      <span className="my-6 capitalize text-2xl">By {resource}</span>
+    </div>
   );
 }
 

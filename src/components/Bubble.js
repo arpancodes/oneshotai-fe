@@ -9,7 +9,7 @@ const Bubble = ({ bubbleArray, selected = "" }) => {
       {displayArray.map((bubble) => (
         <span
           className={`bg-gray-200 rounded-full text-xs block p-1 px-2 m-1 ${
-            selected === bubble ? "bg-green-300" : ""
+            selected === bubble ? "bg-blue-500 text-white" : ""
           }`}
         >
           {bubble}

@@ -4,17 +4,19 @@ import CollegeDetails from "./pages/CollegeDetails";
 import StudentDetails from "./pages/StudentDetails";
 import Dashboard from "./pages/Dashboard";
 
-
 function App() {
   return (
-    <>
+    <div className="bg-gray-50 min-h-[100vh] py-10">
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/colleges" element={<Colleges />} />
         <Route path="/colleges/:id" element={<CollegeDetails />} />
-        <Route path="/colleges/:id/student/:studentId" element={<StudentDetails />} />
+        <Route
+          path="/colleges/:id/student/:studentId"
+          element={<StudentDetails />}
+        />
       </Routes>
-    </>
+    </div>
   );
 }
 

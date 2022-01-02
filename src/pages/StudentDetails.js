@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
+import Title from "../components/Title";
 import { API } from "../config/constants";
 
 const Colleges = () => {
@@ -29,15 +30,11 @@ const Colleges = () => {
   return (
     <div>
       <div className="md:w-4/5 w-full m-auto">
-        <Link
-          className="underline p-2 block"
+        <Title
+          link={`See all Students of ${student.college.name}`}
+          title={student.name}
           to={`/colleges/${student.college._id}`}
-        >
-          &lt; See all Students of {student.college.name}
-        </Link>
-        <h1 className="text-5xl mb-3 bg-purple-600 text-white p-4">
-          {student.name}
-        </h1>
+        />
         <p>
           <span>Student of: </span> {student.college.name}
         </p>
