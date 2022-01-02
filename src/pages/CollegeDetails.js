@@ -52,20 +52,22 @@ const Colleges = () => {
 
   return (
     <div className="md:w-4/5 w-full m-auto">
-      <Title link="&lt; See all Colleges" to="/colleges" title={college.name} />
+      <Title link="See all Colleges" to="/colleges" title={college.name} />
       <div>
         <p>
-          <span>Location: </span> {college.city.name}, {college.state.name},{" "}
-          {college.country.name}
+          <span className="font-medium">Location: </span> {college.city.name},{" "}
+          {college.state.name}, {college.country.name}
         </p>
         <p>
-          <span>Founded in: </span> {college.year}
+          <span className="font-medium">Founded in: </span> {college.year}
         </p>
         <p>
-          <span>Number of students: </span> {college.numberOfStudents}
+          <span className="font-medium">Number of students: </span>{" "}
+          {college.numberOfStudents}
         </p>
         <p>
-          <span>Courses offered: </span> {college.courses.join(", ")}
+          <span className="font-medium">Courses offered: </span>{" "}
+          {college.courses.join(", ")}
         </p>
         <div className="h-1/2">
           <h3 className="text-3xl py-4 my-4 font-semibold">Students</h3>

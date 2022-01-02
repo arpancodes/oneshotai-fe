@@ -54,12 +54,12 @@ const Colleges = () => {
     <div>
       <div className="flex justify-center">
         <div className="md:w-4/5 w-full ">
-          <Title link="&lt; See Dashboard" to="/" title="Browse Colleges" />
+          <Title link="See Dashboard" to="/" title="Browse Colleges" />
           <div className="flex w-full my-6 flex-wrap md:flex-nowrap">
-            <label className="flex items-center mx-2 md:w-1/2 w-full">
+            <label className="flex items-center justify-end mx-2 my-2 md:w-1/2 w-full">
               Course:
               <Select
-                className="mx-1 w-full"
+                className="mx-1 md:w-full w-4/5"
                 options={COURSES}
                 defaultValue={{
                   label: filters.courses,
@@ -70,10 +70,10 @@ const Colleges = () => {
                 }
               />
             </label>
-            <label className="flex items-center mx-2 md:w-1/2 w-full">
+            <label className="flex items-center justify-end my-2 mx-2 md:w-1/2 w-full">
               State:
               <Select
-                className="mx-1 w-full"
+                className="mx-1 md:w-full w-4/5"
                 options={STATES}
                 defaultValue={{ label: filters.states, value: filters.states }}
                 onChange={(e) =>

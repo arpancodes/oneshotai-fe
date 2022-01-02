@@ -36,13 +36,15 @@ const Colleges = () => {
           to={`/colleges/${student.college._id}`}
         />
         <p>
-          <span>Student of: </span> {student.college.name}
+          <span className="font-medium">Student of: </span>{" "}
+          {student.college.name}
         </p>
         <p>
-          <span>Joined in: </span> {student.year}
+          <span className="font-medium">Joined in: </span> {student.year}
         </p>
         <p>
-          <span>Skills: </span> {student.skills.join(", ")}
+          <span className="font-medium">Skills: </span>{" "}
+          {student.skills.join(", ")}
         </p>
       </div>
     </div>

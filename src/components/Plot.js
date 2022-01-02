@@ -59,7 +59,7 @@ function Plot({ resource }) {
           },
         }}
       />
-      <span className="my-6 capitalize text-2xl">By {resource}</span>
+      <span className="mb-10 mt-3 capitalize text-2xl">By {resource}</span>
     </div>
   );
 }
