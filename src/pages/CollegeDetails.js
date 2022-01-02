@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Bubble from "../components/Bubble";
 import CollegeCard from "../components/CollegeCard";
+import Loading from "../components/Loading";
 import { API } from "../config/constants";
 
 const Colleges = () => {
@@ -45,7 +46,7 @@ const Colleges = () => {
   }, [id, page]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (

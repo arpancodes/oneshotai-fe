@@ -4,6 +4,7 @@ import { API } from "../config/constants";
 import Select from "react-select";
 import { COURSES, STATES } from "../config/constants";
 import Bubble from "../components/Bubble";
+import Loading from "../components/Loading";
 
 const Colleges = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -46,7 +47,7 @@ const Colleges = () => {
   }, [filters, page]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
   return (
     <div>

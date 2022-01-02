@@ -1,12 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CollegeCard = ({ college }) => {
-  const navigate = useNavigate();
   return (
-    <div
+    <Link
       className="border p-2 md:w-1/4 w-full m-2 hover:cursor-pointer hover:bg-gray-100"
-      onClick={() => navigate(`/colleges/${college._id}`)}
+      to={`/colleges/${college._id}`}
       key={college._id}
     >
       <p className="text-xl font-bold">{college.name}</p>
@@ -19,7 +18,7 @@ const CollegeCard = ({ college }) => {
           <span className="text-sm bg-gray-200 m-2 p-2">{course}</span>
         ))}
       </p>
-    </div>
+    </Link>
   );
 };
 

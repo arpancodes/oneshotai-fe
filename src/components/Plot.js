@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Doughnut } from "react-chartjs-2";
 import { useNavigate } from "react-router-dom";
 import { API } from "../config/constants";
+import Loading from "./Loading";
 
 function Plot({ resource }) {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ function Plot({ resource }) {
       });
   }, [resource]);
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return <Loading />;
 
   return (
     <Doughnut
