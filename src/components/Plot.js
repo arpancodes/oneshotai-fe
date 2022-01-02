@@ -32,7 +32,6 @@ function Plot({ resource }) {
           (color) => `rgba(${color}, 0.6)`
         );
         setData(data);
-        console.log(data);
         setLoading(false);
       });
   }, [resource]);
@@ -45,7 +44,6 @@ function Plot({ resource }) {
         data={data}
         options={{
           onClick: (e, item) => {
-            console.log(data.labels[item[0].index], item[0].index);
             navigate(`/colleges?${resource}=${data.labels[item[0].index]}`);
           },
           plugins: {
