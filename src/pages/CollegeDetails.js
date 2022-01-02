@@ -130,9 +130,13 @@ const Colleges = () => {
         <div>
           <h3 className="text-3xl py-4 my-4 font-semibold">Similar Colleges</h3>
           <div className="flex flex-wrap justify-start">
-            {similarColleges.map((college) => (
-              <CollegeCard college={college} />
-            ))}
+            {similarColleges.length > 0 ? (
+              similarColleges.map((college) => (
+                <CollegeCard college={college} />
+              ))
+            ) : (
+              <div>No similar colleges found.</div>
+            )}
           </div>
         </div>
       </div>
