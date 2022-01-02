@@ -3,6 +3,7 @@ import { useSearchParams, useNavigate, Link } from "react-router-dom";
 import { API } from "../config/constants";
 import Select from "react-select";
 import { COURSES, STATES } from "../config/constants";
+import Bubble from "../components/Bubble";
 
 const Colleges = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -97,7 +98,7 @@ const Colleges = () => {
                 {colleges.length > 0 ? (
                   colleges.map((college) => (
                     <tr
-                      className="hover:cursor-pointer hover:bg-gray-100"
+                      className="hover:cursor-pointer hover:bg-gray-100 border-b"
                       onClick={() => navigate(`/colleges/${college._id}`)}
                       key={college._id}
                     >
@@ -107,25 +108,10 @@ const Colleges = () => {
                         {college.country.name}
                       </td>
                       <td className="p-4 text-center flex flex-wrap items-center">
-                        {college.courses
-                          .filter(
-                            (course, idx) =>
-                              idx <= 1 || searchParams.get("courses") === course
-                          )
-                          .map((course) => (
-                            <span
-                              className={`bg-gray-200 rounded-full block p-1 px-2 m-2 ${
-                                searchParams.get("courses") === course
-                                  ? "bg-green-300"
-                                  : ""
-                              }`}
-                            >
-                              {course}
-                            </span>
-                          ))}{" "}
-                        {college.courses.length > 2 && (
-                          <span> and {college.courses.length - 2} more</span>
-                        )}
+                        <Bubble
+                          bubbleArray={college.courses}
+                          selected={searchParams.get("courses")}
+                        />
                       </td>
                     </tr>
                   ))
@@ -139,7 +125,7 @@ const Colleges = () => {
               </tbody>
             </table>
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center mt-2">
             <button
               className="p-2 bg-blue-500 disabled:bg-gray-200 disabled:text-gray-400 text-white w-60 mx-2"
               disabled={page <= 1}

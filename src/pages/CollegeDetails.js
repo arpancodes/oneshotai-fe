@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import Bubble from "../components/Bubble";
+import CollegeCard from "../components/CollegeCard";
 import { API } from "../config/constants";
 
 const Colleges = () => {
@@ -82,7 +84,7 @@ const Colleges = () => {
               {students.length > 0 ? (
                 students.map((student) => (
                   <tr
-                    className="hover:cursor-pointer hover:bg-gray-100"
+                    className="hover:cursor-pointer hover:bg-gray-100 border-b"
                     onClick={() =>
                       navigate(`/colleges/${id}/student/${student._id}`)
                     }
@@ -93,18 +95,7 @@ const Colleges = () => {
                     </td>
                     <td className="p-4 text-center">{student.year}</td>
                     <td className="p-4 text-center flex flex-wrap items-center">
-                      {student.skills
-                        .filter((_, idx) => idx <= 1)
-                        .map((skill) => (
-                          <span
-                            className={`bg-gray-200 rounded-full block p-1 px-2 m-2`}
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      {student.skills.length > 2 && (
-                        <span> and {student.skills.length - 2} more</span>
-                      )}
+                      <Bubble bubbleArray={student.skills} />
                     </td>
                   </tr>
                 ))
@@ -117,7 +108,7 @@ const Colleges = () => {
               )}
             </tbody>
           </table>
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center mt-2">
             <button
               className="p-2 bg-blue-500 disabled:bg-gray-200 disabled:text-gray-400 text-white w-60 mx-2"
               disabled={page <= 1}
@@ -141,25 +132,7 @@ const Colleges = () => {
           <h3 className="text-2xl p-4">Similar Colleges</h3>
           <div className="flex flex-wrap justify-center">
             {similarColleges.map((college) => (
-              <div
-                className="border p-2 md:w-1/4 w-full m-2 hover:cursor-pointer hover:bg-gray-100"
-                onClick={() => navigate(`/colleges/${college._id}`)}
-                key={college._id}
-              >
-                <p className="text-xl font-bold">{college.name}</p>
-                <p>
-                  {college.city.name}, {college.state.name},{" "}
-                  {college.country.name}
-                </p>
-                <p>{college.numberOfStudents} Students</p>
-                <p className="flex flex-wrap">
-                  {college.courses.map((course) => (
-                    <span className="text-sm bg-gray-200 m-2 p-2">
-                      {course}
-                    </span>
-                  ))}
-                </p>
-              </div>
+              <CollegeCard college={college} />
             ))}
           </div>
         </div>
